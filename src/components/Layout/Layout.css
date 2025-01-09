@@ -5,6 +5,13 @@ body {
   padding: 0;
 }
 
+main {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .saleBanner {
   display: flex;
   align-items: center;
@@ -195,10 +202,8 @@ body {
   }
 
   .saleBanner {
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px;
     font-size: 13px;
+    gap: 10px;
   }
 
   .nav-button-text {
@@ -294,11 +299,23 @@ body {
     height: 50px;
   }
 
-  .saleBanner {
+  /* .saleBanner {
+    flex-direction: column;
+    gap: 5px;
     padding: 5px;
-  }
+    font-size: 13px;
+  } */
 
   .banner-item {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 327px) {
+  .saleBanner {
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    font-size: 13px;
   }
 }

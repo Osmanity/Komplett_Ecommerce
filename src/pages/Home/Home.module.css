@@ -1,0 +1,54 @@
+.container {
+  /* max-width: 1600px; */
+  margin: 0 auto;
+  width: calc(100vw - 64px);
+  max-width: 1728px;
+}
+
+.campaignHero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+
+  /* flex-direction: row; */
+  align-items: stretch;
+  /* flex-wrap: wrap; */
+}
+
+.mainImage,
+.secondaryImage {
+  /* flex: 1; */
+  width: 100%;
+  /* max-height: 400px; */
+  height: auto;
+  /* border-radius: 8px; */
+  transition: transform 0.3s ease;
+  /* object-fit: none; */
+}
+
+.mainImage:hover,
+.secondaryImage:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 1730px) {
+  .campaignHero {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .imageGrid {
+    flex-direction: column;
+  }
+
+  .campaignHero {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
