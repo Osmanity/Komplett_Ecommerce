@@ -16,24 +16,26 @@ const TopNavbar = () => {
 
       <div className="nav-center">
         <div className="search-container">
-          <button className="search-button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </button>
-          <input
-            type="text"
-            placeholder="Sök bland 10 000 produkter"
-            className="search-input"
-          />
+          <div className="search-wrapper">
+            <button className="search-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+            <input
+              type="text"
+              placeholder="Sök bland 10 000 produkter"
+              className="search-input"
+            />
+          </div>
         </div>
       </div>
 
