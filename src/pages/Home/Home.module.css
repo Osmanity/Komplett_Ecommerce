@@ -1,54 +1,198 @@
 .container {
-  /* max-width: 1600px; */
-  margin: 0 auto;
-  width: calc(100vw - 64px);
   max-width: 1728px;
+  margin: 0 auto;
+  /* padding: 0 32px; */
 }
 
 .campaignHero {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   margin-top: 20px;
-
-  /* flex-direction: row; */
-  align-items: stretch;
-  /* flex-wrap: wrap; */
-}
-
-.mainImage,
-.secondaryImage {
-  /* flex: 1; */
+  max-width: 1728px;
+  aspect-ratio: 1728px / 380;
   width: 100%;
-  /* max-height: 400px; */
   height: auto;
-  /* border-radius: 8px; */
-  transition: transform 0.3s ease;
-  /* object-fit: none; */
 }
 
-.mainImage:hover,
-.secondaryImage:hover {
+.mainImage {
+  flex: 1;
+  height: 100%;
+  min-width: 0;
+  max-width: 1127px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.secondaryImage {
+  flex: 0 0 auto;
+  width: 33%;
+  max-width: 556px;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.blackTitleDivider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #000;
+  padding: 5px 20px;
+  border-radius: 8px;
+  margin-top: 18px;
+  margin-bottom: 20px;
+}
+
+.yellowTitleDivider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29px;
+  color: #000;
+  cursor: pointer;
+  background-color: #f8b912;
+  padding: 5px 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.advertisementBanner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  max-width: 1728px;
+  aspect-ratio: 1728px / 380;
+  width: 100%;
+  object-fit: contain;
+  height: auto;
+  /* padding: 5px 20px; */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.productContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  /* padding: 20px; */
+  /* padding-left: 20px; */
+  /* max-width: 1600px; */
+  width: 100%;
+}
+
+.productsWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.productContainer > * {
+  flex: 0 0 calc(18% - 20px);
+  min-width: 0;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+  /* padding: 0 20px; */
+}
+
+.categoryItem {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.categoryItem img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.categoryItem:hover {
   transform: scale(1.02);
   cursor: pointer;
 }
 
-/* Responsive design */
-@media (max-width: 1730px) {
-  .campaignHero {
-    flex-direction: column;
+@media (max-width: 1024px) {
+  .categoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoryGrid {
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 }
 
-@media (max-width: 768px) {
-  .imageGrid {
-    flex-direction: column;
-  }
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 3em;
+  line-height: 1.5;
+}
 
+@media (max-width: 1600px) {
+  .productContainer > * {
+    flex: 0 0 calc(25% - 18px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .productContainer > * {
+    flex: 0 0 calc(33.333% - 16px);
+  }
+}
+
+@media (max-width: 1400px) {
   .campaignHero {
     flex-direction: column;
-    gap: 10px;
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  .mainImage,
+  .secondaryImage {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .productContainer > * {
+    flex: 0 0 100%;
+  }
+  .blackTitleDivider,
+  .yellowTitleDivider {
+    position: sticky;
+    top: -5px;
+    z-index: 100;
   }
 }
