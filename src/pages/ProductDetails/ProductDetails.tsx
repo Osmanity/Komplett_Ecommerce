@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./ProductDetails.module.css";
+import { useCart } from "../../context/CartContext";
 
 interface Product {
   _id: string;
@@ -18,6 +19,8 @@ function ProductDetails() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const thumbnailRef = useRef<HTMLDivElement>(null);
+
+  const { addItem } = useCart();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -197,7 +200,19 @@ function ProductDetails() {
         </div>
 
         <div className={styles.ctaContainer}>
-          <button className={styles.addToCartButton}>LÄGG I KUNDVAGN</button>
+          <button
+            className={styles.addToCartButton}
+            onClick={() =>
+              addItem({
+                _id: product._id,
+                name: product.name,
+                price: product.price,
+                image: product.images[0],
+              })
+            }
+          >
+            LÄGG I KUNDVAGN
+          </button>
           <div className={styles.separator}>
             <span className={styles.separatorText}>eller</span>
           </div>

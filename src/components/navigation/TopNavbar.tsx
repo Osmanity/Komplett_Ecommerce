@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import "./TopNavbar.css";
+import { useCart } from "../../context/CartContext";
 
 const TopNavbar = () => {
+  const { state } = useCart();
+  const formatPrice = (price: number): string => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  };
+
   return (
     <nav className="navbar">
       <div className="nav-left">
@@ -70,7 +76,10 @@ const TopNavbar = () => {
           </svg>
           <span className="nav-button-text">Logga in</span>
         </Link>
-        <Link to="/cart" className="nav-button">
+        <Link to="/checkout" className="nav-button cart-button">
+          {state.totalItems > 0 && (
+            <span className="cart-badge">{state.totalItems}</span>
+          )}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -83,7 +92,12 @@ const TopNavbar = () => {
               fill="black"
             ></path>
           </svg>
-          <span className="nav-button-text">(PRIS)</span>
+
+          <span className="nav-button-text">
+            {state.totalItems > 0
+              ? `${formatPrice(state.totalPrice)},00`
+              : "Kundkorg"}
+          </span>
         </Link>
       </div>
     </nav>
