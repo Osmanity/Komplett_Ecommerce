@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./CheckoutPage.css";
 
 export default function CheckoutPage() {
-  const { state, removeItem, addItem, clearCart } = useCart();
+  const { state, removeItem, addItem, clearCart, decreaseQuantity } = useCart();
 
   const handleIncreaseQuantity = (item: {
     _id: string;
@@ -15,7 +15,7 @@ export default function CheckoutPage() {
   };
 
   const handleDecreaseQuantity = (id: string) => {
-    removeItem(id);
+    decreaseQuantity(id);
   };
 
   const handleRemoveProduct = (id: string) => {
@@ -24,6 +24,10 @@ export default function CheckoutPage() {
 
   const handleClearCart = () => {
     clearCart();
+  };
+
+  const formatPrice = (price: number): string => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   };
 
   if (state.items.length === 0) {
@@ -38,31 +42,33 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="checkout-container">
+    <div className="checkout">
       <h1>Din varukorg</h1>
 
-      <div className="checkout-content">
-        <div className="cart-items">
+      <div className="checkout__layout">
+        <div className="shopping-cart">
           {state.items.map((item) => (
-            <div key={item._id} className="cart-item">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="cart-item-image"
-              />
+            <div key={item._id} className="product-card">
+              <div className="product-image-container">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="product-image"
+                />
+              </div>
 
-              <div className="cart-item-details">
+              <div className="product-info">
                 <h3>{item.name}</h3>
-                <p className="cart-item-price">{item.price}:-</p>
+                <p className="price">{formatPrice(item.price)}.00:-</p>
 
-                <div className="quantity-controls">
+                <div className="counter">
                   <button
                     onClick={() => handleDecreaseQuantity(item._id)}
-                    className="quantity-btn"
+                    className="number-btn"
                   >
                     -
                   </button>
-                  <span className="quantity">{item.quantity}</span>
+                  <span className="count">{item.quantity}</span>
                   <button
                     onClick={() =>
                       handleIncreaseQuantity({
@@ -72,7 +78,7 @@ export default function CheckoutPage() {
                         image: item.image,
                       })
                     }
-                    className="quantity-btn"
+                    className="number-btn"
                   >
                     +
                   </button>
@@ -80,7 +86,7 @@ export default function CheckoutPage() {
 
                 <button
                   onClick={() => handleRemoveProduct(item._id)}
-                  className="remove-btn"
+                  className="delete-btn"
                 >
                   Ta bort
                 </button>
@@ -89,25 +95,25 @@ export default function CheckoutPage() {
           ))}
         </div>
 
-        <div className="checkout-summary">
+        <div className="summary">
           <h2>Sammanfattning</h2>
-          <div className="summary-details">
-            <div className="summary-row">
+          <div className="summary__content">
+            <div className="summary__row">
               <span>Antal varor:</span>
               <span>{state.totalItems}</span>
             </div>
-            <div className="summary-row total">
+            <div className="summary__row summary__row--total">
               <span>Totalt:</span>
-              <span>{state.totalPrice}:-</span>
+              <span>{formatPrice(state.totalPrice)},00:-</span>
             </div>
           </div>
 
-          <div className="checkout-actions">
-            <button className="checkout-btn">Genomför köp</button>
-            <button onClick={handleClearCart} className="clear-cart-btn">
+          <div className="summary__actions">
+            <button className="btn btn--primary">Genomför köp!</button>
+            <button onClick={handleClearCart} className="btn btn--danger">
               Rensa varukorg
             </button>
-            <Link to="/" className="continue-shopping">
+            <Link to="/" className="btn btn--link">
               Fortsätt handla
             </Link>
           </div>
