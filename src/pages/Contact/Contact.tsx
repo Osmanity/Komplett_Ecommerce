@@ -74,13 +74,22 @@ function Contact() {
         }
       );
 
+      const data: ApiResponse = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Något gick fel vid skickandet av meddelandet"
+        );
+      }
+
       setSubmitStatus({
         type: "success",
         message:
           "Tack för ditt meddelande! Vi återkommer så snart som möjligt.",
       });
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "" }); // Återställ formuläret
     } catch (error) {
+      console.error("Error sending message:", error);
       setSubmitStatus({
         type: "error",
         message: "Ett fel uppstod. Försök igen senare.",

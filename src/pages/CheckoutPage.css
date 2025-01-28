@@ -184,9 +184,3 @@
     /* width: 100%; */
   }
 }
-
-@media (max-width: 965px) {
-  .product-card {
-    /* flex-direction: column; */
-  }
-}
