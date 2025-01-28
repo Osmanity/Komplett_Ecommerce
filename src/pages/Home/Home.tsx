@@ -187,7 +187,7 @@ function Home() {
         </>
       )}
 
-      <div style={{ marginBottom: "600px" }}></div>
+      {/* <div style={{ marginBottom: "600px" }}></div> */}
     </div>
   );
 }

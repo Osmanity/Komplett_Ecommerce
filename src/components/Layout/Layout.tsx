@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
 import TopNavbar from "../navigation/TopNavbar";
 import BottomNavbar from "../navigation/BottomNavbar";
+import Footer from "../navigation/Footer";
 import "./Layout.css";
 
 function Layout() {
   return (
-    <div>
+    <div className="layout-container">
       <div className="saleBanner">
         <div className="banner-item">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -36,17 +37,12 @@ function Layout() {
         </div>
       </div>
       <TopNavbar />
-      <div
-        style={{
-          width: "100%",
-          height: "1px",
-          backgroundColor: "#e5e5e5",
-        }}
-      />
-      <main>
+      <div className="layout-divider" />
+      <main className="layout-main">
         <Outlet />
       </main>
       <BottomNavbar />
+      <Footer />
     </div>
   );
 }
