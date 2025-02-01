@@ -1,0 +1,162 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.filterSection {
+  margin-bottom: 30px;
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: 500;
+  font-family: "roboto", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  margin-right: 1rem;
+  color: #333;
+}
+
+.viewControls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.sortSelect select {
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  min-width: 200px;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 5px;
+}
+
+.viewToggle button {
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.viewToggle button.active {
+  background: #f8b912;
+  border-color: #f8b912;
+  color: white;
+}
+
+.filterBar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.categoryButton {
+  padding: 8px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.categoryButton:hover {
+  background: #f5f5f5;
+}
+
+.categoryButton.active {
+  background: #f8b912;
+  border-color: #f8b912;
+  color: white;
+}
+
+.productsGrid {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+}
+
+.productsGrid.grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.productsGrid.list {
+  grid-template-columns: 1fr;
+}
+
+.productWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.productLink {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+@media (max-width: 1400px) {
+  .productsGrid.grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .productsGrid.grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .productsGrid.grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .filterHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .viewControls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sortSelect select {
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .filterBar {
+    gap: 5px;
+  }
+
+  .categoryButton {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

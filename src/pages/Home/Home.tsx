@@ -68,6 +68,57 @@ function Home() {
     ));
   };
 
+  const categoryItems = [
+    {
+      image:
+        "https://www.komplett.se/marketingmedia/161008/k_cat_q424_hwgaming_btn_winter_se.png",
+      alt: "Datorutrustning & gaming",
+      category: "gaming",
+    },
+    {
+      image:
+        "https://www.komplett.se/marketingmedia/161010/k_cat_q424_mobwatch_btn_winter_se.png",
+      alt: "Mobil & klockor",
+      category: "mobiltelefoner",
+    },
+    {
+      image:
+        "https://www.komplett.se/marketingmedia/161005/k_cat_q424_tv_btn_winter_se.png",
+      alt: "TV",
+      category: "TV",
+    },
+    {
+      image:
+        "https://www.komplett.se/marketingmedia/161007/k_cat_q424_homeleisure_btn_winter_se.png",
+      alt: "Hem & skönhet",
+      category: "",
+    },
+    {
+      image:
+        "https://www.komplett.se/marketingmedia/161009/k_cat_q424_kpc_btn_winter_se.png",
+      alt: "Komplett-PC",
+      category: "PC",
+    },
+    {
+      image:
+        "https://www.komplett.se/marketingmedia/161003/k_cat_q424_pctabs_btn_winter_se.png",
+      alt: "Datorer & surfplattor",
+      category: "laptop",
+    },
+    {
+      image:
+        "https://www.komplett.se/marketingmedia/161004/k_cat_q424_sound_btn_winter_se.png",
+      alt: "Ljud",
+      category: "Audio",
+    },
+    {
+      image:
+        "https://www.komplett.se/marketingmedia/161006/k_cat_q424_whitegoods_btn_winter_se.png",
+      alt: "Vitvaror",
+      category: "dammsugare",
+    },
+  ];
+
   return (
     <div className={styles.container}>
       <div className={styles.campaignHero}>
@@ -88,62 +139,15 @@ function Home() {
       </div>
 
       <div className={styles.categoryGrid}>
-        <div className={styles.categoryItem}>
-          <img
-            src="https://www.komplett.se/marketingmedia/161008/k_cat_q424_hwgaming_btn_winter_se.png"
-            alt="Datorutrustning & gaming"
-            loading="lazy"
-          />
-        </div>
-        <div className={styles.categoryItem}>
-          <img
-            src="https://www.komplett.se/marketingmedia/161010/k_cat_q424_mobwatch_btn_winter_se.png"
-            alt="Mobil & klockor"
-            loading="lazy"
-          />
-        </div>
-        <div className={styles.categoryItem}>
-          <img
-            src="https://www.komplett.se/marketingmedia/161005/k_cat_q424_tv_btn_winter_se.png"
-            alt="TV"
-            loading="lazy"
-          />
-        </div>
-        <div className={styles.categoryItem}>
-          <img
-            src="https://www.komplett.se/marketingmedia/161007/k_cat_q424_homeleisure_btn_winter_se.png"
-            alt="Hem & skönhet"
-            loading="lazy"
-          />
-        </div>
-        <div className={styles.categoryItem}>
-          <img
-            src="https://www.komplett.se/marketingmedia/161009/k_cat_q424_kpc_btn_winter_se.png"
-            alt="Komplett-PC"
-            loading="lazy"
-          />
-        </div>
-        <div className={styles.categoryItem}>
-          <img
-            src="https://www.komplett.se/marketingmedia/161003/k_cat_q424_pctabs_btn_winter_se.png"
-            alt="Datorer & surfplattor"
-            loading="lazy"
-          />
-        </div>
-        <div className={styles.categoryItem}>
-          <img
-            src="https://www.komplett.se/marketingmedia/161004/k_cat_q424_sound_btn_winter_se.png"
-            alt="Ljud"
-            loading="lazy"
-          />
-        </div>
-        <div className={styles.categoryItem}>
-          <img
-            src="https://www.komplett.se/marketingmedia/161006/k_cat_q424_whitegoods_btn_winter_se.png"
-            alt="Vitvaror"
-            loading="lazy"
-          />
-        </div>
+        {categoryItems.map((item, index) => (
+          <Link
+            to={`/categories?category=${item.category}`}
+            className={styles.categoryItem}
+            key={index}
+          >
+            <img src={item.image} alt={item.alt} loading="lazy" />
+          </Link>
+        ))}
       </div>
       <div className={styles.blackTitleDivider}>
         <span>Månadens Gamingdeals {">"}</span>
