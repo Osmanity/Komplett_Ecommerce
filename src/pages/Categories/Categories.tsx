@@ -32,7 +32,7 @@ function Categories() {
 
         const uniqueCategories = [
           ...new Set(data.map((p: Product) => p.category)),
-        ];
+        ] as string[];
         setCategories(uniqueCategories);
       } catch (error) {
         console.error("Error fetching products:", error);
