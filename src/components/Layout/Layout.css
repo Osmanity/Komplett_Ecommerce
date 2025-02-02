@@ -125,4 +125,5 @@ main {
 
 .layout-main {
   flex: 1;
+  min-height: 80vh;
 }

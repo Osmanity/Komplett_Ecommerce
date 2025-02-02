@@ -17,6 +17,8 @@ import Login from "./pages/Auth/Login/Login";
 import Register from "./pages/Auth/Register/Register";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext";
+import OrderHistory from "./pages/OrderHistory/OrderHistory";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   return (
@@ -62,6 +64,15 @@ function App() {
             <Route path="categories" element={<Categories />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route
+              path="orders"
+              element={
+                <ProtectedRoute>
+                  <OrderHistory />
+                </ProtectedRoute>
+              }
+            />
+
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

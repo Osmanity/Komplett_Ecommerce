@@ -1,9 +1,13 @@
 import { useCart } from "../context/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./CheckoutPage.css";
+import { useAuth } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 export default function CheckoutPage() {
   const { state, removeItem, addItem, clearCart, decreaseQuantity } = useCart();
+  const { token, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   const handleIncreaseQuantity = (item: {
     _id: string;
@@ -28,6 +32,48 @@ export default function CheckoutPage() {
 
   const formatPrice = (price: number): string => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  };
+
+  const handlePurchase = async () => {
+    if (!isAuthenticated) {
+      toast.error("Du måste vara inloggad för att genomföra ett köp");
+      navigate("/login");
+      return;
+    }
+
+    try {
+      const orderData = {
+        products: state.items.map((item) => ({
+          productId: item._id,
+          quantity: item.quantity,
+        })),
+      };
+
+      const response = await fetch(
+        "https://js2-ecommerce-api.vercel.app/api/orders",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(orderData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Något gick fel vid köpet");
+      }
+
+      toast.success("Köpet genomfördes!");
+      clearCart();
+      navigate("/orders");
+    } catch (error) {
+      console.error("Error placing order:", error);
+      toast.error("Något gick fel vid köpet. Försök igen senare.");
+    }
   };
 
   if (state.items.length === 0) {
@@ -109,7 +155,9 @@ export default function CheckoutPage() {
           </div>
 
           <div className="summary__actions">
-            <button className="btn btn--primary">Genomför köp!</button>
+            <button className="btn btn--primary" onClick={handlePurchase}>
+              Genomför köp!
+            </button>
             <button onClick={handleClearCart} className="btn btn--danger">
               Rensa varukorg
             </button>

@@ -1,7 +1,9 @@
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .filterSection {
@@ -89,6 +91,8 @@
   display: grid;
   gap: 20px;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .productsGrid.grid {
