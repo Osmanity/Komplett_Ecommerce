@@ -237,3 +237,132 @@
     font-size: 12px;
   }
 }
+
+.bottom-nav .user-button {
+  position: relative;
+}
+
+.bottom-nav .user-dropdown {
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  transform: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s;
+  z-index: 1000;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.bottom-nav .dropdown-content {
+  background: white;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+  padding: 8px 0;
+  margin: 0 8px;
+}
+
+.bottom-nav .dropdown-content a,
+.bottom-nav .dropdown-content button {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  text-align: left;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.bottom-nav .dropdown-content a:hover,
+.bottom-nav .dropdown-content button:hover {
+  background-color: #f5f5f5;
+}
+
+.bottom-nav .user-dropdown.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.bottom-nav .profile-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bottom-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.mobile-dropdown {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 60px; /* Adjust this value based on your bottom nav height */
+  background: white;
+  z-index: 999;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-dropdown-content {
+  padding: 8px 0;
+}
+
+.mobile-dropdown-content a,
+.mobile-dropdown-content button {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.mobile-dropdown-content a:last-child,
+.mobile-dropdown-content button:last-child {
+  border-bottom: none;
+}
+
+.mobile-dropdown-content a:active,
+.mobile-dropdown-content button:active {
+  background-color: #f5f5f5;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.profile-button svg {
+  width: 24px;
+  height: 24px;
+  /* margin-bottom: 4px; */
+}
+
+.profile-button span {
+  font-size: 12px;
+}
